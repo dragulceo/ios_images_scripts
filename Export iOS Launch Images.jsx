@@ -72,17 +72,18 @@ for (key in exports) {
           }
           doc.resizeCanvas(UnitValue(width, unit), UnitValue(height, unit));
 		  orientation = (n === 1 ? 'portrait' : 'landscape');
-          newName = 'launch-image-' + originalDoc.name.replace(/\.[a-z]+$/, '') + '_' + width + '_' + height + '_' + orientation;
+          namePrefix = originalDoc.name.replace(/\.[a-z]+$/, '') + '_' + orientation;
           extraSuffix = '';
           if (exportObj.retina) {
                halfDoc = doc.duplicate();
                app.activeDocument = halfDoc;
                halfDoc.resizeImage(UnitValue(width / 2, unit), UnitValue(height / 2, unit), null, ResampleMethod.BICUBIC);
-               halfDoc.exportDocument(File(originalDoc.path + '/' + newName + extension), ExportType.SAVEFORWEB, options);
+			   filename = namePrefix + '_' + (width) + '_' + (height) + extension;
+               halfDoc.exportDocument(File(originalDoc.path + '/' + filename), ExportType.SAVEFORWEB, options);
                halfDoc.close(SaveOptions.DONOTSAVECHANGES);
-               newName += "@2x";
           }
-          doc.exportDocument(File(originalDoc.path + '/' + newName + extension), ExportType.SAVEFORWEB, options);
+	   	  filename = namePrefix + '_' + width + '_' + height + '@2x' + extension;
+          doc.exportDocument(File(originalDoc.path + '/' + filename), ExportType.SAVEFORWEB, options);
           doc.close(SaveOptions.DONOTSAVECHANGES);
      }
 }
