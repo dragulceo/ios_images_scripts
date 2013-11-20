@@ -50,7 +50,7 @@ for (key in exports) {
           if (item.retina) {
                newExport.retina = item.retina;
           }
-          items.push(item);
+          items.push(newExport);
      }
 
      n = items.length;
