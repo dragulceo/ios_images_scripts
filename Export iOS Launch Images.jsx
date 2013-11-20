@@ -5,22 +5,25 @@
 // $.level = 0;
 // debugger; // launch debugger on next line
 
-var originalDoc, exports, width, height, items, exportObj, newExport, item, n, doc, newName, orientation, extraSuffix, unit, options, extension;
+var originalDoc, exports_launch, exports_icons, exports, width, height, items, exportObj, newExport, item, n, doc, namePrefix, filename, orientation, extraSuffix, unit, options, extension;
 // get a reference to the current (active) document and store it in a variable (it should be a square image of 2048px
 originalDoc = app.activeDocument;
 
 // we save first the ipad images then resize for iphone 4 inch and then we export for iphone 4 inch and iphone
-exports = {
+exports_launch = {
      ipad: {
           size: [2048, 1536],
           retina: true,
           all_orientations: true
      },
-     ipad_old: {
+     ipad_old_1: {
           size: [2048, 1496],
-          retina: true,
-          all_orientations: true
+          retina: true
      },
+	 ipad_old_2: {
+		 size: [1536, 2008],
+		 retina: true
+	 },
      iphone_4_inch: {
           size: [640, 1136]
      },
@@ -29,6 +32,41 @@ exports = {
           retina: true
      }
 };
+
+exports_icons = {
+	_1: {
+		size: [114, 114],
+		retina: true
+	},
+	_2: {
+		size: [120, 120]
+	},
+	_3: {
+		size: [144, 144],
+		retina: true
+	},
+	_4: {
+		size: [152, 152],
+		retina: true
+	},
+	_5: {
+		size: [58, 58],
+		retina: true
+	},
+	_6: {
+		size: [80, 80]
+	},
+	_7: {
+		size: [100, 100],
+		retina: true
+	},
+	_8: {
+		size: [80, 80],
+		retina: true
+	}
+};
+
+exports = exports_launch;
 
 unit = 'px';
 // our web export options
