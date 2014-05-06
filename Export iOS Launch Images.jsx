@@ -5,7 +5,7 @@
 // $.level = 0;
 // debugger; // launch debugger on next line
 
-var originalDoc, exports_launch, exports_icons, exports, width, height, items, exportObj, newExport, item, n, doc, namePrefix, filename, orientation, extraSuffix, unit, options, extension;
+var originalDoc, exports_launch, exports_icons, exports_facebook_icons, exports_facebook_images, exports, width, height, items, exportObj, newExport, item, n, doc, namePrefix, filename, orientation, extraSuffix, unit, options, extension, key;
 // get a reference to the current (active) document and store it in a variable (it should be a square image of 2048px
 originalDoc = app.activeDocument;
 
@@ -20,10 +20,10 @@ exports_launch = {
           size: [2048, 1496],
           retina: true
      },
-	 ipad_old_2: {
-		 size: [1536, 2008],
-		 retina: true
-	 },
+     ipad_old_2: {
+       size: [1536, 2008],
+       retina: true
+     },
      iphone_4_inch: {
           size: [640, 1136]
      },
@@ -66,7 +66,34 @@ exports_icons = {
 	}
 };
 
-exports = exports_launch;
+exports_facebook_icons = {
+	_1: {
+		size: [16, 16]
+	},
+	_2: {
+		size: [75, 75]
+	},
+	_3: {
+		size: [128, 128]
+	}
+};
+
+exports_facebook_images = {
+	_1: {
+		size: [155, 100]
+	},
+	_2: {
+		size: [800, 150]
+	},
+	_3: {
+		size: [180, 115]
+	},
+	_4: {
+		size: [394, 150]
+	}
+};
+
+exports = exports_facebook_images;
 
 unit = 'px';
 // our web export options
@@ -96,7 +123,7 @@ for (key in exports) {
           exportObj = items[n];
           doc = originalDoc.duplicate();
           app.activeDocument = doc;
-		  executeAction(charIDToTypeID('MrgV'), undefined, DialogModes.NO);
+          executeAction(charIDToTypeID('MrgV'), undefined, DialogModes.NO);
           width = exportObj.size[0];
           height = exportObj.size[1];
 
@@ -109,18 +136,18 @@ for (key in exports) {
                }
           }
           doc.resizeCanvas(UnitValue(width, unit), UnitValue(height, unit));
-		  orientation = (n === 1 ? 'portrait' : 'landscape');
+          orientation = (n === 1 ? 'portrait' : 'landscape');
           namePrefix = originalDoc.name.replace(/\.[a-z]+$/, '') + '_' + orientation;
           extraSuffix = '';
           if (exportObj.retina) {
                halfDoc = doc.duplicate();
                app.activeDocument = halfDoc;
                halfDoc.resizeImage(UnitValue(width / 2, unit), UnitValue(height / 2, unit), null, ResampleMethod.BICUBIC);
-			   filename = namePrefix + '_' + (width) + '_' + (height) + extension;
+               filename = namePrefix + '_' + (width) + '_' + (height) + extension;
                halfDoc.exportDocument(File(originalDoc.path + '/' + filename), ExportType.SAVEFORWEB, options);
                halfDoc.close(SaveOptions.DONOTSAVECHANGES);
           }
-	   	  filename = namePrefix + '_' + width + '_' + height + '@2x' + extension;
+          filename = namePrefix + '_' + width + '_' + height + '@2x' + extension;
           doc.exportDocument(File(originalDoc.path + '/' + filename), ExportType.SAVEFORWEB, options);
           doc.close(SaveOptions.DONOTSAVECHANGES);
      }
