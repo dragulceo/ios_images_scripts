@@ -19,6 +19,38 @@
         "iphone": {
             "size": [640, 960],
             "retina": true
+        },
+        "retina_hd_55": {
+          "size": [1242, 2208],
+          "retina": false,
+          "all_orientations": true
+        },
+        "retina_hd_47": {
+          "size": [750, 1334],
+          "retina": false
+        },
+        "iphone_portrait2x": {
+          "size": [640, 960]
+        },
+        "iphone_retina_4": {
+          "size": [640, 1136]
+        }
+    },
+    "android_icons": {
+        "_1": {
+            "size": [72, 72]
+        },
+        "_2": {
+            "size": [48, 48]
+        },
+        "_3": {
+            "size": [96, 96]
+        },
+        "_4": {
+            "size": [144, 144]
+        },
+        "_5": {
+            "size": [192, 192]
         }
     },
     "icons": {
@@ -50,6 +82,18 @@
         },
         "_8": {
             "size": [80, 80],
+            "retina": true
+        },
+        "_9": {
+            "size": [40, 40],
+            "retina": true
+        },
+        "_10": {
+            "size": [60, 60],
+            "retina": true
+        },
+        "_11": {
+            "size": [29, 29],
             "retina": true
         }
     },
